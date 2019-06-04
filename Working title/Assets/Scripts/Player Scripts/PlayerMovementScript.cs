@@ -35,6 +35,10 @@ public class PlayerMovementScript : MonoBehaviour
         {
             p_RB.velocity = new Vector3(p_RB.velocity.x, p_RB.velocity.y, MaxSpeed * Input.GetAxis("Vertical"));
         }
-
+        
+        if(Input.GetKey(KeyCode.Space))
+        {
+            p_RB.AddForce(new Vector3(0, Jumpforce, 0),ForceMode.Impulse);
+        }
     }
 }

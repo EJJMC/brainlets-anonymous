@@ -28,7 +28,7 @@ public class CameraScript : MonoBehaviour
 
         MousePos += Smooth;
 
-        transform.localRotation = Quaternion.AngleAxis(-MousePos.y, Vector3.right);
+       transform.localRotation = Quaternion.AngleAxis(-MousePos.y, Vector3.right);
         Player.transform.localRotation = Quaternion.AngleAxis(MousePos.x, Player.transform.up);
     }
 }

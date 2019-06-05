@@ -16,7 +16,7 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (p_RB.velocity.x<MaxSpeed&&p_RB.velocity.z<MaxSpeed)
+        if (Mathf.Abs(p_RB.velocity.x)<MaxSpeed && Mathf.Abs(p_RB.velocity.z) < MaxSpeed)
         { 
             if (Mathf.Abs(Input.GetAxis("Vertical")) > 0)
             {
@@ -27,14 +27,7 @@ public class PlayerMovementScript : MonoBehaviour
                 p_RB.AddForce(this.transform.right * Input.GetAxis("Horizontal") * AccelSpeed);
             }
         }
-        if(Mathf.Abs(p_RB.velocity.x)>MaxSpeed)
-        {
-            p_RB.velocity = new Vector3(MaxSpeed * Input.GetAxis("Horizontal"), p_RB.velocity.y, p_RB.velocity.z);
-        }
-        if (Mathf.Abs(p_RB.velocity.z) > MaxSpeed)
-        {
-            p_RB.velocity = new Vector3(p_RB.velocity.x, p_RB.velocity.y, MaxSpeed * Input.GetAxis("Vertical"));
-        }
+       
         
         if(Input.GetKey(KeyCode.Space))
         {

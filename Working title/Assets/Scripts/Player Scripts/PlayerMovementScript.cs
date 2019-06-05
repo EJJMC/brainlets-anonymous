@@ -36,7 +36,7 @@ public class PlayerMovementScript : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            p_RB.AddForce(new Vector3(0, Jumpforce, 0),ForceMode.Impulse);
+            p_RB.AddForce(new Vector3(0, Jumpforce, 0));
         }
     }
 }

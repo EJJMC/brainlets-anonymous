@@ -16,20 +16,25 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Mathf.Abs(p_RB.velocity.x)<MaxSpeed && Mathf.Abs(p_RB.velocity.z) < MaxSpeed)
-        { 
-            if (Mathf.Abs(Input.GetAxis("Vertical")) > 0)
-            {
-                p_RB.AddForce(this.transform.forward * Input.GetAxis("Vertical") * AccelSpeed);
-            }
-            if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
-            {
-                p_RB.AddForce(this.transform.right * Input.GetAxis("Horizontal") * AccelSpeed);
-            }
+        if (Mathf.Abs(Input.GetAxis("Vertical")) > 0)
+        {
+            p_RB.AddForce(this.transform.forward * Input.GetAxis("Vertical") * AccelSpeed);
         }
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0)
+        {
+            p_RB.AddForce(this.transform.right * Input.GetAxis("Horizontal") * AccelSpeed);
+        }
+
+
+        // this is the speed limiter for the player.
+        if(p_RB.velocity.magnitude>MaxSpeed)
+        {
+            p_RB.velocity = p_RB.velocity.normalized * MaxSpeed;
+        }
+        
        
         
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             p_RB.AddForce(new Vector3(0, Jumpforce, 0),ForceMode.Impulse);
         }
